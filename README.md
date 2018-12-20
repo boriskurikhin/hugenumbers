@@ -1,5 +1,5 @@
 # Huge Number Adder (100%)
-Adds two numbers (positive or negative) that may have 100,000 digits!
+Adds two integers (positive or negative) that may have 100,000 digits!
 
 Input:
 
