@@ -67,6 +67,9 @@ int main() {
         } else {
             if (first[0] == '-') {
                 first = first.substr(1);
+                if (first == second) {
+                    cout << "0" << endl; continue;
+                }
                 bool neg = false;
                 if (smaller(first, second)) {
                     neg = true;
@@ -74,8 +77,8 @@ int main() {
                 }
                 secondComp = "";
 
-                for (int i = 0; i < second.size(); i++) secondComp.push_back(9 - (second[i] - '0') + '0');
                 for (int i = 0; i < (first.size() - secondComp.size()); i++) secondComp= "9" + secondComp;
+                for (int i = 0; i < second.size(); i++) secondComp.push_back(9 - (second[i] - '0') + '0');
                 
                 result = add(first, secondComp);
                 
@@ -98,14 +101,17 @@ int main() {
                 cout << (neg ? "" : "-") << result << endl;
             } else {
                 second = second.substr(1);
+                if (first == second) {
+                    cout << "0" << endl; continue;
+                }
                 bool neg = false;
                 if (smaller(first, second)) {
                     neg = true;
                     swap(first, second);
                 }
                 secondComp = "";
-                for (int i = 0; i < second.size(); i++) secondComp.push_back(9 - (second[i] - '0') + '0');
                 for (int i = 0; i < (first.size() - secondComp.size()); i++) secondComp = "9" + secondComp;
+                for (int i = 0; i < second.size(); i++) secondComp.push_back(9 - (second[i] - '0') + '0');
                 
                 result = add(first, secondComp);
 
