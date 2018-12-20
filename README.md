@@ -12,3 +12,9 @@ Output:
 6742754495314453747426435454903498145627126319391954452305712877464038
 ```
 Check ^ result [here](https://www.calculator.net/big-number-calculator.html?cx=9875078569688374138956411816990545654080057168632086628410340521034811+&cy=-3132324074373920391529976362087047508452930849240132176104627643570773&cp=20&co=plus):
+
+You can run the code by first installing a [g++ compiler](https://gcc.gnu.org/), and then running:
+```
+  g++ -std=c++11 main.cpp -o adder
+  ./adder
+```
