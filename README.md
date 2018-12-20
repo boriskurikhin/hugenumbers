@@ -1,6 +1,4 @@
 # Huge Number Adder (100%)
-Super Huge Number Adder (supports negatives)
-
 Adds two numbers (positive or negative) that may have 100,000 digits!
 
 Input:
