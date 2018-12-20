@@ -86,96 +86,56 @@ int main() {
             if (result == "") result = "0";
             cout << result << endl;
         } else {
-
+            int which = 1;
             //If the first number is negative
             if (first[0] == '-') {
                 //take out negative sign
                 first = first.substr(1);
-
-                //If youre subtracting two equal numbers...
-                if (first == second) {
-                    cout << "0" << endl; 
-                    continue;
-                }
-
-                bool neg = false;
-                //Perfers bigger number in numerator
-                if (smaller(first, second)) {
-                    neg = true;
-                    swap(first, second);
-                }
-
-                //Pad the smaller number with 9's
-                for (int i = 0; i < (first.size() - secondComp.size()); i++) secondComp= "9" + secondComp;
-                //9's complement
-                for (int i = 0; i < second.size(); i++) secondComp.push_back(9 - (second[i] - '0') + '0');
-                //Add complement to the first number
-                result = add(first, secondComp);
-                //If we have a carry
-                if (result.size() > first.size()) {
-                    string carry = to_string(result[0] - '0');
-                    result = result.substr(1);
-                    //Remove it and add it back into the result
-                    result = add(carry, result);
-                } else {
-                    //If there's no carry just do 9's complement again
-                    for (int i = 0; i < result.size(); i++) result[i] = (9 - (result[i] - '0') + '0');
-                }
-
-                //Remove leading 0's
-                result.erase(0, result.find_first_not_of('0'));
-
-                //0 check
-                if (result == "") {
-                    cout << "0" << endl;
-                    continue;
-                }
-
-                cout << (neg ? "" : "-") << result << endl;
             } else {
-                //Take out the negative
                 second = second.substr(1);
-                //If youre subtracting two equal numbers...
-                if (first == second) {
-                    cout << "0" << endl; 
-                    continue;
-                }
-                bool neg = false;
-                //Put the larger number into numerator
-                if (smaller(first, second)) {
-                    neg = true;
-                    swap(first, second);
-                }
-                //Pad smaller number with 9's
-                for (int i = 0; i < (first.size() - secondComp.size()); i++) secondComp = "9" + secondComp;
-                //9's complement
-                for (int i = 0; i < second.size(); i++) secondComp.push_back(9 - (second[i] - '0') + '0');
-                
-                //Add complement to the bigger number
-                result = add(first, secondComp);
-
-                //If there's a carry
-                if (result.size() > first.size()) {
-                    string carry = to_string(result[0] - '0');
-                    result = result.substr(1);
-                    //Remove it and add it back
-                    result = add(carry, result);
-                } else {
-                    //Else do the 9's complement if there's no carry
-                    for (int i = 0; i < result.size(); i++) result[i] = (9 - (result[i] - '0') + '0');
-                }
-
-                //Remove leading zeros
-                result.erase(0, result.find_first_not_of('0'));
-
-                //0 check
-                if (result == "") {
-                    cout << "0" << endl; 
-                    continue;
-                }
-
-                cout << (neg ? "-" : "") << result << endl;
+                which = 2;
             }
+
+            //If youre subtracting two equal numbers...
+            if (first == second) {
+                cout << "0" << endl; 
+                continue;
+            }
+
+            bool neg = false;
+            //Perfers bigger number in numerator
+            if (smaller(first, second)) {
+                neg = true;
+                swap(first, second);
+            }
+
+            //Pad the smaller number with 9's
+            for (int i = 0; i < (first.size() - secondComp.size()); i++) secondComp= "9" + secondComp;
+            //9's complement
+            for (int i = 0; i < second.size(); i++) secondComp.push_back(9 - (second[i] - '0') + '0');
+            //Add complement to the first number
+            result = add(first, secondComp);
+            //If we have a carry
+            if (result.size() > first.size()) {
+                string carry = to_string(result[0] - '0');
+                result = result.substr(1);
+                //Remove it and add it back into the result
+                result = add(carry, result);
+            } else {
+                //If there's no carry just do 9's complement again
+                for (int i = 0; i < result.size(); i++) result[i] = (9 - (result[i] - '0') + '0');
+            }
+
+            //Remove leading 0's
+            result.erase(0, result.find_first_not_of('0'));
+
+            //0 check
+            if (result == "") {
+                cout << "0" << endl;
+                continue;
+            }
+
+            cout << (neg ? (which == 2 ? "-" : "") : (which == 1 ? "-" : "")) << result << endl;
         }
     }
     return 0;
