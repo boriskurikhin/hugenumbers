@@ -64,12 +64,9 @@ string first, second, secondComp, result;
 
 int main() {
     cin.tie(0); cin.sync_with_stdio(0);
-    cin >> N;
-    //grabs N
-    while(N--) {
         cin >> first >> second;
         secondComp = "";
-        
+
         //If both numbers are negative
         if (first[0] == '-' && second[0] == '-') {
             result = add(first.substr(1), second.substr(1));
@@ -99,7 +96,7 @@ int main() {
             //If youre subtracting two equal numbers...
             if (first == second) {
                 cout << "0" << endl; 
-                continue;
+                return 0;
             }
 
             bool neg = false;
@@ -132,11 +129,10 @@ int main() {
             //0 check
             if (result == "") {
                 cout << "0" << endl;
-                continue;
+                return 0;
             }
 
             cout << (neg ? (which == 2 ? "-" : "") : (which == 1 ? "-" : "")) << result << endl;
         }
-    }
     return 0;
 }
